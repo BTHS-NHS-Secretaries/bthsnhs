@@ -4,6 +4,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Typing animation */
+@keyframes typewriter {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 49% {
+    border-right-color: rgba(59, 130, 246, 1);
+  }
+  50%, 100% {
+    border-right-color: transparent;
+  }
+}
+
+/* Fade in slowly */
+@keyframes fadeInSlow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid rgb(59, 130, 246);
+  animation: typewriter 3s steps(50, end) forwards, blink 0.7s infinite;
+}
+
+.typing-text-fade {
+  animation: fadeInSlow 2s ease-in-out forwards;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   @apply bg-darkBlue-900 text-white;

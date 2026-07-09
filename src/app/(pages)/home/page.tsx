@@ -70,19 +70,18 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative bg-slate-900">
+    <div className="">
       <div>
         <Carousel />
 
       <FadeInSection className="max-w-7xl mx-auto px-4 pt-32">
         <div className="mb-12">
           <h2 className="text-6xl font-bold mb-6 text-center text-white">
-            <span className="text-blue-400">About</span> BTHS NHS
+            <span className="text-blue-400 typing-text">About</span> BTHS NHS
           </h2>
           <div className="w-32 h-1 bg-blue-400 mx-auto rounded-full mb-8"></div>
           
           <p className="text-2xl leading-relaxed text-center max-w-4xl mx-auto mb-12 text-gray-200">
-            Brooklyn Technical High School National Honor Society is a prestigious organization of <span className="font-bold text-blue-400">600+ members</span> dedicated to serving our school and community.
             Brooklyn Technical High School National Honor Society is a prestigious organization of <span className="font-bold text-blue-400">600+ members</span> dedicated to serving our school and community. We foster excellence in scholarship, leadership, character, and service.
           </p>
 
@@ -109,9 +108,9 @@ export default function Home() {
         </div>
       </FadeInSection>
 
-      <FadeInSection className="bg-slate-700 py-20">
+      <FadeInSection className="bg-[#F6FAFD] py-20">
         <div className="bg-indigo-900 rounded-3xl p-16 max-w-3xl mx-auto border border-indigo-700">
-          <h3 className="text-5xl font-bold mb-10 text-white">Get Involved</h3>
+          <h3 className="text-5xl font-bold mb-10 text-white typing-text">Get Involved</h3>
           <div className="space-y-5 mb-10">
             <div className="flex gap-4 text-gray-200">
               <span className="text-blue-400 text-2xl">•</span>
@@ -147,7 +146,7 @@ export default function Home() {
       <FadeInSection className="bg-slate-800 py-24">
         <div className="max-w-7xl mx-auto px-4 mb-20">
           <h2 className="text-6xl font-bold mb-6 text-center text-white">
-            <span className="text-blue-400">Featured</span> Events
+            <span className="text-blue-400 typing-text">Featured</span> Events
           </h2>
           <div className="w-32 h-1 bg-blue-400 mx-auto rounded-full"></div>
         </div>
@@ -185,11 +184,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
         <div className="mb-20">
           <h2 className="text-6xl font-bold mb-6 text-center text-white">
-            Our <span className="text-blue-400">Pillars</span>
+            Our <span className="text-blue-400 typing-text">Pillars</span>
           </h2>
           <div className="w-32 h-1 bg-blue-400 mx-auto rounded-full mb-10"></div>
           <p className="text-center text-gray-300 text-xl max-w-2xl mx-auto">
-            IDK ILL THINK OF HOW TO IMPROVE THIS LATER
+
           </p>
         </div>
 
