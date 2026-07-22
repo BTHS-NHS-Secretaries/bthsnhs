@@ -8,8 +8,7 @@ interface Executive {
   image: string;
   favoriteColor: string;
   favoriteFood: string;
-  extraQuestion: string;
-  extraAnswer: string;
+  bucketListAnswer: string;
 }
 
 interface ExecutiveModalProps {
@@ -54,9 +53,11 @@ export default function ExecutiveModal({ executive, isVisible, position }: Execu
 
         <div>
           <p className="text-gold font-semibold text-xs uppercase tracking-widest mb-1">
-            {executive.extraQuestion}
+            What is on your bucket list?
           </p>
-          <p className="text-gray-200 text-xs leading-relaxed">{executive.extraAnswer}</p>
+          <p className="text-gray-200 text-xs leading-relaxed">
+            {executive.bucketListAnswer?.trim() || "They haven't shared one yet."}
+          </p>
         </div>
       </div>
 

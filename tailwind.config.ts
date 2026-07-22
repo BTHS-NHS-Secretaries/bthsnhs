@@ -13,6 +13,7 @@ const config: Config = {
       },
       colors: {
         darkBlue: {
+          950: "#00152b",
           900: "#001f3d",
           800: "#003366",
           700: "#004080",
@@ -26,6 +27,8 @@ const config: Config = {
         slideRight: "slide-right 2s forwards",
         slideLeft: "slide-left 2s forwards",
         slideDown: "slide-down 2s forwards",
+        fadeInUp: "fade-in-up 0.9s cubic-bezier(0.16,1,0.3,1) forwards",
+        blinkCursor: "blink-cursor 0.9s steps(1) infinite",
       },
       keyframes: {
         "slide-in": {
@@ -44,6 +47,21 @@ const config: Config = {
           "0%": { transform: "translateY(-50%)" },
           "100%": { transform: "translateY(0)" },
         },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "blink-cursor": {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
+        "progress-bar": {
+          "0%": { transform: "scaleX(0)" },
+          "100%": { transform: "scaleX(1)" },
+        },
+      },
+      transitionTimingFunction: {
+        "expo-out": "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },
