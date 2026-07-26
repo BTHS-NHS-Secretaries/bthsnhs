@@ -18,6 +18,15 @@
   animation: fadeInSlow 2s ease-in-out forwards;
 }
 
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   @apply bg-darkBlue-900 text-white;

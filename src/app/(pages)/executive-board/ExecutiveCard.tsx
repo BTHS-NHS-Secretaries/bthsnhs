@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import ExecutiveModal from './ExecutiveModal';
+import { executivePhotoFocus } from '@/config/executivePhotoOffsets';
 
 interface Executive {
   id: string;
@@ -92,6 +93,7 @@ export default function ExecutiveCard({ executive, priority = false }: Executive
               priority={priority}
               sizes="(min-width: 1536px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
               className="object-cover bg-white transition-transform duration-500 group-hover:scale-105"
+              style={{ objectPosition: `center ${executivePhotoFocus[executive.id] ?? 50}%` }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}

@@ -92,14 +92,14 @@ const EVENTS = [
     title: 'Freshman Orientation',
     image: '/data/images/fresh-orientation.jpg',
     description:
-      'Welcome new students to the BTHS community with an engaging orientation event. Learn about NHS, our mission, and how to get involved in making a difference.',
+      'Welcome new students to the BTHS community with an engaging orientation event. They learn about BTHS classes, clubs, and resources, while meeting fellow students and upperclassmen that teach them about the school and how to succeed in it.',
     accent: { text: 'text-gold', ring: 'ring-gold/40' },
   },
   {
     id: 'fwv',
     title: 'Future World Visions',
     image: '/data/images/fwv.JPG',
-    description: 'Details coming soon.',
+    description: 'Future world visions is a intiative to teach younger students about STEM, in hopes of leading the construction of a better future. Volunteers from NHS help run the event, and guide students to workshops hosted by several BTHS clubs and organizations, where they learn about various topics and fields in STEM.',
     accent: { text: 'text-blue-400', ring: 'ring-blue-400/40' },
   },
   {
@@ -107,7 +107,7 @@ const EVENTS = [
     title: 'Homecoming',
     image: '/data/images/alumni-homecoming.jpg',
     description:
-      'Reconnect with NHS alumni and celebrate school spirit at our annual Homecoming celebration, filled with games, community, and Brooklyn Tech pride.',
+      'Homecoming is a special event that brings together current students, alumni, and faculty to celebrate the spirit of BTHS. NHS members help organize and facilitate the event, ensuring a memorable experience for all attendees.',
     accent: { text: 'text-teal-400', ring: 'ring-teal-400/40' },
   },
 ];
