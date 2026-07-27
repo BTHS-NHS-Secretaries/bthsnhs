@@ -20,10 +20,13 @@ export default function TopNavBar() {
   };
 
   return (
-    <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 bg-darkBlue-800 bg-opacity-60 backdrop-blur-md rounded-full shadow-xl px-8 py-3">
-      <ul className="flex gap-6">
+    <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 max-w-[94vw] bg-darkBlue-800 bg-opacity-60 backdrop-blur-md rounded-full shadow-xl">
+      <ul
+        className="flex gap-2 sm:gap-6 px-4 sm:px-8 py-3 overflow-x-auto [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         {navItems.map((item) => (
-          <li key={item.href}>
+          <li key={item.href} className="flex-shrink-0">
             <Link
               href={item.href}
               className={`block px-3 py-2 rounded-lg transition-all duration-200 font-medium whitespace-nowrap text-sm ${

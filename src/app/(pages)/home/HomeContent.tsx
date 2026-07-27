@@ -123,14 +123,13 @@ export default function HomeContent({
     <div>
       <Carousel images={carouselImages} />
 
-      {/* Shared, subtle glow layer spanning About → Events → Values so there's no
-          hard cutoff at section boundaries the way per-section blobs used to cause. */}
+      {/* One shared glow layer spans About → Events → Values so it fades smoothly
+          instead of getting clipped at each section's own boundary. */}
       <div className="relative overflow-hidden">
         <div className="absolute top-[6%] right-0 w-[34rem] h-[34rem] translate-x-1/3 rounded-full bg-blue-500/[0.06] blur-[120px] pointer-events-none" />
         <div className="absolute top-[48%] left-0 w-[36rem] h-[36rem] -translate-x-1/3 rounded-full bg-gold/[0.06] blur-[120px] pointer-events-none" />
         <div className="absolute bottom-[4%] right-[8%] w-[30rem] h-[30rem] rounded-full bg-teal-500/[0.05] blur-[120px] pointer-events-none" />
 
-        {/* About + Get Involved — one layered section instead of two disconnected blocks */}
         <FadeInSection className="relative bg-gradient-to-b from-darkBlue-900 to-darkBlue-950">
           <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-24">
             <h2 className="text-6xl font-bold mb-6 text-center text-white">
@@ -168,7 +167,6 @@ export default function HomeContent({
                 </div>
               </div>
 
-              {/* Layered "Get Involved" card — overlaps into the About column on large screens */}
               <div className="lg:col-span-2 relative lg:-ml-6 lg:mt-6">
                 <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 via-blue-500/10 to-transparent blur-2xl rounded-[2.5rem] pointer-events-none" />
                 <div className="relative bg-gradient-to-br from-darkBlue-800/95 to-darkBlue-950/95 backdrop-blur-sm rounded-3xl p-10 border border-gold/30 shadow-2xl lg:rotate-1 hover:rotate-0 transition-transform duration-500 ease-expo-out">
@@ -204,7 +202,6 @@ export default function HomeContent({
           </div>
         </FadeInSection>
 
-        {/* Featured Events */}
         <section className="relative bg-darkBlue-950 py-24">
           <FadeInSection className="max-w-7xl mx-auto px-4 mb-20">
             <h2 className="text-6xl font-bold mb-6 text-center text-white">
@@ -260,7 +257,6 @@ export default function HomeContent({
           </div>
         </section>
 
-        {/* Our Values — heading + blurb share the left column, gallery fills the right */}
         <section className="relative bg-gradient-to-b from-darkBlue-950 to-darkBlue-900 py-24">
           <FadeInSection className="max-w-7xl mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-14 items-center">

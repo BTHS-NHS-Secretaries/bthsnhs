@@ -34,7 +34,6 @@ export default function MemberPointsDashboard() {
           return;
         }
 
-        // Fetch General data
         const generalRes = await fetch('/api/member/general', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -47,7 +46,6 @@ export default function MemberPointsDashboard() {
 
         const generalResult = await generalRes.json();
 
-        // Fetch Committee data
         const committeeRes = await fetch('/api/member/committee', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -84,9 +82,12 @@ export default function MemberPointsDashboard() {
 
   if (loading) {
     return (
-      <div className="bg-darkBlue-900 text-white min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 pt-32 pb-16">
+      <div className="relative bg-darkBlue-900 text-white min-h-screen overflow-hidden">
+        <div className="absolute top-[-8%] right-[-8%] w-[32rem] h-[32rem] rounded-full bg-gold/[0.07] blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[-8%] w-[32rem] h-[32rem] rounded-full bg-blue-500/[0.07] blur-[120px] pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-16">
           <div className="text-center">
+            <div className="inline-block w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin mb-4" />
             <p className="text-xl text-gray-400">Loading...</p>
           </div>
         </div>
@@ -96,13 +97,15 @@ export default function MemberPointsDashboard() {
 
   if (error || !generalData) {
     return (
-      <div className="bg-darkBlue-900 text-white min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 pt-32 pb-16">
+      <div className="relative bg-darkBlue-900 text-white min-h-screen overflow-hidden">
+        <div className="absolute top-[-8%] right-[-8%] w-[32rem] h-[32rem] rounded-full bg-gold/[0.07] blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[-8%] w-[32rem] h-[32rem] rounded-full bg-blue-500/[0.07] blur-[120px] pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-16">
           <div className="text-center">
             <p className="text-xl text-red-400">{error || 'Failed to load user data'}</p>
             <button
               onClick={() => router.push('/login')}
-              className="mt-4 px-6 py-3 bg-gold text-darkBlue-900 rounded-lg font-semibold"
+              className="mt-4 px-6 py-3 bg-gold text-darkBlue-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors duration-200"
             >
               Back to Login
             </button>
@@ -112,7 +115,6 @@ export default function MemberPointsDashboard() {
     );
   }
 
-  // Get general event columns (exclude standard columns)
   const excludeKeys = [
     'Full Name',
     'First Name',
@@ -133,7 +135,6 @@ export default function MemberPointsDashboard() {
       return acc;
     }, {} as { [key: string]: number });
 
-  // Get committee event columns
   const committeeExcludeKeys = [
     'Full Name',
     'First Name',
@@ -156,103 +157,107 @@ export default function MemberPointsDashboard() {
         }, {} as { [key: string]: number })
     : {};
 
+  const renderEventsTable = (events: { [key: string]: number }, emptyLabel: string, accentText: string) => {
+    if (Object.keys(events).length === 0) {
+      return (
+        <div className="rounded-xl border border-dashed border-gold/25 py-10 text-center">
+          <p className="text-gray-500">{emptyLabel}</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="overflow-x-auto rounded-xl border border-gold/40 shadow-lg">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-gold/10 border-b border-gold/40">
+              <th className="px-6 py-4 text-left font-semibold text-sm uppercase tracking-wider text-gray-300">
+                Event Name
+              </th>
+              <th className="px-6 py-4 text-right font-semibold text-sm uppercase tracking-wider text-gray-300">
+                Points
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(events).map(([event, points], idx) => (
+              <tr
+                key={event}
+                className={`border-b border-gold/10 last:border-b-0 hover:bg-gold/5 transition-colors duration-150 ${
+                  idx % 2 === 1 ? 'bg-white/[0.02]' : ''
+                }`}
+              >
+                <td className="px-6 py-4 text-gray-200">{event}</td>
+                <td className={`px-6 py-4 text-right font-bold ${accentText}`}>{points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
   return (
-    <div className="bg-darkBlue-900 text-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 pt-32 pb-16">
-        {/* Header Section with Logout */}
-        <div className="flex justify-between items-start mb-12">
+    <div className="relative bg-darkBlue-900 text-white min-h-screen overflow-hidden">
+      <div className="absolute top-[-8%] right-[-8%] w-[32rem] h-[32rem] rounded-full bg-gold/[0.07] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[-10%] w-[32rem] h-[32rem] rounded-full bg-blue-500/[0.06] blur-[120px] pointer-events-none" />
+      <div className="absolute top-[45%] right-[-10%] w-[26rem] h-[26rem] rounded-full bg-teal-500/[0.05] blur-[120px] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-16">
+        <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-12 opacity-0 animate-fadeInUp">
           <div className="flex-1">
             <h1 className="text-6xl font-bold mb-4">
               Welcome, <span className="text-gold">{generalData['First Name']}</span>
             </h1>
             <p className="text-lg text-gray-300">
-              <strong>Note: Events may be added before points are inputted. Please allow a week for your points to update. Thank you!</strong>
+              <strong>Note:</strong> Events may be added before points are inputted. Please allow a week for your
+              points to update. Thank you!
             </p>
           </div>
           <button
             onClick={handleLogout}
-            className="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors duration-200 whitespace-nowrap ml-4"
+            className="px-6 py-3 bg-red-600/15 hover:bg-red-600 border border-red-500/50 hover:border-red-600 text-red-300 hover:text-white rounded-lg font-semibold transition-all duration-200 whitespace-nowrap"
           >
             Logout
           </button>
         </div>
 
-        {/* User Details Section */}
-        <div className="bg-gradient-to-br from-darkBlue-800 to-darkBlue-700 rounded-xl border border-gold border-opacity-40 p-8 mb-12">
+        <div
+          className="relative bg-gradient-to-br from-darkBlue-800/90 to-darkBlue-950/90 backdrop-blur-sm rounded-2xl border border-gold/30 p-8 mb-12 shadow-2xl opacity-0 animate-fadeInUp"
+          style={{ animationDelay: '100ms' }}
+        >
+          <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-gold/40 rounded-tr-2xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-gold/40 rounded-bl-2xl pointer-events-none" />
+
           <div className="text-center mb-8">
-            <p className="text-2xl mb-4">
-              <strong>Committee:</strong> <span className="text-gold">{generalData.Committee}</span>
-            </p>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-sm">
+              <span className="text-gray-400">Committee</span>
+              <span className="text-gold font-semibold">{generalData.Committee}</span>
+            </span>
           </div>
 
-          {/* Points Summary */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-darkBlue-800 rounded-lg p-6 border border-gold border-opacity-30">
-              <p className="text-lg text-gray-300 mb-2">Total General Points</p>
+            <div className="bg-darkBlue-900/60 rounded-xl p-6 border border-gold/25 hover:border-gold/40 transition-colors duration-300">
+              <p className="text-sm uppercase tracking-wider text-gray-400 mb-2">Total General Points</p>
               <p className="text-5xl font-bold text-gold">{generalData['Total General Points'] || 0}</p>
             </div>
-            <div className="bg-darkBlue-800 rounded-lg p-6 border border-gold border-opacity-30">
-              <p className="text-lg text-gray-300 mb-2">Total Committee Points</p>
-              <p className="text-5xl font-bold text-gold">{committeeData?.['Total Committee Points'] || 0}</p>
+            <div className="bg-darkBlue-900/60 rounded-xl p-6 border border-blue-400/25 hover:border-blue-400/40 transition-colors duration-300">
+              <p className="text-sm uppercase tracking-wider text-gray-400 mb-2">Total Committee Points</p>
+              <p className="text-5xl font-bold text-blue-400">{committeeData?.['Total Committee Points'] || 0}</p>
             </div>
           </div>
         </div>
 
-        {/* General Events Table */}
-        <div className="mb-12">
+        <div className="mb-12 opacity-0 animate-fadeInUp" style={{ animationDelay: '200ms' }}>
           <h2 className="text-4xl font-bold mb-6 text-center text-gold">General Events</h2>
-          {Object.keys(generalEvents).length > 0 ? (
-            <div className="overflow-x-auto rounded-xl border border-gold border-opacity-40">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-gold bg-opacity-20 border-b border-gold border-opacity-40">
-                    <th className="px-6 py-4 text-left font-semibold">Event Name</th>
-                    <th className="px-6 py-4 text-right font-semibold">Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(generalEvents).map(([event, points]) => (
-                    <tr key={event} className="border-b border-gold border-opacity-20 hover:bg-darkBlue-800 hover:bg-opacity-30 transition-colors">
-                      <td className="px-6 py-4">{event}</td>
-                      <td className="px-6 py-4 text-right font-semibold text-gold">{points}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p className="text-center text-gray-400">No general events found</p>
-          )}
+          {renderEventsTable(generalEvents, 'No general events found', 'text-gold')}
         </div>
 
-        {/* Committee Events Table */}
-        <div className="mb-12">
-          <h2 className="text-4xl font-bold mb-6 text-center text-gold">Committee Events</h2>
-          {Object.keys(committeeEvents).length > 0 ? (
-            <div className="overflow-x-auto rounded-xl border border-gold border-opacity-40">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-gold bg-opacity-20 border-b border-gold border-opacity-40">
-                    <th className="px-6 py-4 text-left font-semibold">Event Name</th>
-                    <th className="px-6 py-4 text-right font-semibold">Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(committeeEvents).map(([event, points]) => (
-                    <tr key={event} className="border-b border-gold border-opacity-20 hover:bg-darkBlue-800 hover:bg-opacity-30 transition-colors">
-                      <td className="px-6 py-4">{event}</td>
-                      <td className="px-6 py-4 text-right font-semibold text-gold">{points}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p className="text-center text-gray-400">No committee events found</p>
-          )}
+        <div className="mb-12 opacity-0 animate-fadeInUp" style={{ animationDelay: '300ms' }}>
+          <h2 className="text-4xl font-bold mb-6 text-center text-blue-400">Committee Events</h2>
+          {renderEventsTable(committeeEvents, 'No committee events found', 'text-blue-400')}
         </div>
 
-        {/* Footer Navigation */}
         <div className="text-center">
           <Link href="/" className="text-gold hover:text-yellow-400 transition-colors">
             Back to Home
@@ -262,5 +267,3 @@ export default function MemberPointsDashboard() {
     </div>
   );
 }
-              
-

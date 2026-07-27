@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { supabaseAdmin } from '@/utils/supabase/admin';
+import { TABLES, normalizeForLookup } from '@/utils/supabase/schema';
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,19 +13,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Query the Committee table by Email
-    const { data: committeeData, error: committeeError } = await supabase
-      .from('Commitee')
+    // Query the Committee table by Email (case-insensitive, trimmed — see
+    // normalizeForLookup for why an exact `.eq()` match is too fragile here)
+    const { data: committeeData, error: committeeError } = await supabaseAdmin
+      .from(TABLES.COMMITTEE)
       .select('*')
-      .eq('Email', email)
+      .ilike('Email', normalizeForLookup(email))
       .single();
 
     if (committeeError) {
       console.error('Committee data query error:', committeeError);
-      return NextResponse.json(
-        { error: 'User data not found' },
-        { status: 404 }
-      );
+      const message =
+        committeeError.code === 'PGRST116'
+          ? 'No member record found for this email in the Committee sheet. Ask an officer to confirm your email is listed there.'
+          : 'User data not found';
+      return NextResponse.json({ error: message }, { status: 404 });
     }
 
     return NextResponse.json({

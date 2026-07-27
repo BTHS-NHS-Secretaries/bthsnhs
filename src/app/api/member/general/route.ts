@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { supabaseAdmin } from '@/utils/supabase/admin';
+import { TABLES, normalizeForLookup } from '@/utils/supabase/schema';
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,19 +13,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Query the General table by Email
-    const { data: generalData, error: generalError } = await supabase
-      .from('General')
+    // Query the General table by Email (case-insensitive, trimmed — see
+    // normalizeForLookup for why an exact `.eq()` match is too fragile here)
+    const { data: generalData, error: generalError } = await supabaseAdmin
+      .from(TABLES.GENERAL)
       .select('*')
-      .eq('Email', email)
+      .ilike('Email', normalizeForLookup(email))
       .single();
 
     if (generalError) {
       console.error('General data query error:', generalError);
-      return NextResponse.json(
-        { error: 'User data not found' },
-        { status: 404 }
-      );
+      const message =
+        generalError.code === 'PGRST116'
+          ? 'No member record found for this email in the General sheet. Ask an officer to confirm your email is listed there.'
+          : 'User data not found';
+      return NextResponse.json({ error: message }, { status: 404 });
     }
 
     return NextResponse.json({

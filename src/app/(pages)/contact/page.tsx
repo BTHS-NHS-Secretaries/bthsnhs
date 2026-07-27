@@ -96,14 +96,12 @@ function FAQAccordion() {
 export default function Contact() {
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-darkBlue-900 to-darkBlue-950 text-white">
-      {/* Shared glow layer, matching the home page's ambient background treatment */}
       <div className="absolute top-[4%] right-0 w-[34rem] h-[34rem] translate-x-1/3 rounded-full bg-blue-500/[0.06] blur-[120px] pointer-events-none" />
       <div className="absolute top-[45%] left-0 w-[36rem] h-[36rem] -translate-x-1/3 rounded-full bg-gold/[0.06] blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[6%] right-[8%] w-[30rem] h-[30rem] rounded-full bg-teal-500/[0.05] blur-[120px] pointer-events-none" />
 
       <section className="relative max-w-7xl mx-auto px-6 pt-32">
-        <div className="mb-24 space-y-24">
-          {/* Page heading */}
+        <div className="mb-24 space-y-10">
           <div className="text-center">
             <h1 className="text-6xl font-bold text-white mb-4">
               Get In <span className="text-gold">Touch</span>
@@ -114,7 +112,6 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Email Section */}
           <div>
             <h2 className="text-4xl font-bold text-gold mb-2 text-center">Contact Us</h2>
             <div className="w-16 h-1 bg-gold mx-auto rounded-full opacity-50 mb-8" />
@@ -149,7 +146,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Location Section */}
           <div>
             <h2 className="text-4xl font-bold text-gold mb-2 text-center">Location</h2>
             <div className="w-16 h-1 bg-gold mx-auto rounded-full opacity-50 mb-8" />
@@ -175,14 +171,12 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* FAQ Section */}
           <div className="border-t border-white/10 pt-16">
             <h2 className="text-5xl font-bold text-gold mb-2 text-center">FAQ</h2>
             <div className="w-16 h-1 bg-gold mx-auto rounded-full opacity-50 mb-12" />
             <FAQAccordion />
           </div>
 
-          {/* Social Section */}
           <div>
             <h2 className="text-4xl font-bold text-gold mb-2 text-center">Follow Us</h2>
             <div className="w-16 h-1 bg-gold mx-auto rounded-full opacity-50 mb-8" />

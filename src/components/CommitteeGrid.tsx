@@ -100,7 +100,7 @@ export default function CommitteeGrid() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-6">
         {committees.map((committee, index) => {
           const { icon: Icon, accent } = COMMITTEE_STYLE[committee.name] ?? DEFAULT_STYLE;
           const style = accentStyles[accent];
@@ -110,26 +110,25 @@ export default function CommitteeGrid() {
               key={committee.name}
               onClick={() => handleBoxClick(committee)}
               style={{ animationDelay: `${index * 50}ms` }}
-              className={`group relative overflow-hidden bg-white/5 backdrop-blur-sm rounded-2xl p-7 min-h-44 cursor-pointer text-left transition-all duration-300 border border-white/10 ${style.hoverBorder} hover:-translate-y-1.5 hover:bg-white/[0.08] hover:shadow-2xl ${style.glow}`}
+              className={`group relative overflow-hidden bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-7 min-h-32 sm:min-h-36 md:min-h-44 cursor-pointer text-left transition-all duration-300 border border-white/10 ${style.hoverBorder} hover:-translate-y-1.5 hover:bg-white/[0.08] hover:shadow-2xl ${style.glow}`}
             >
-              {/* Soft radial glow that blooms on hover */}
               <div
                 className={`absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br ${style.bg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
               />
 
               <div className="relative z-10 flex flex-col h-full">
                 <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${style.bg} ring-1 ${style.ring} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br ${style.bg} ring-1 ${style.ring} flex items-center justify-center mb-3 sm:mb-4 md:mb-5 group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <Icon size={22} className={style.text} />
+                  <Icon size={18} className={style.text} />
                 </div>
 
-                <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors duration-300 leading-snug">
+                <h3 className="text-sm sm:text-base md:text-xl font-bold text-white group-hover:text-white transition-colors duration-300 leading-snug">
                   {committee.name}
                 </h3>
 
                 <span
-                  className={`mt-auto pt-4 text-xs font-semibold uppercase tracking-widest ${style.text} opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300`}
+                  className={`mt-auto pt-4 text-xs font-semibold uppercase tracking-widest ${style.text} opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300 hidden md:block`}
                 >
                   Learn more →
                 </span>

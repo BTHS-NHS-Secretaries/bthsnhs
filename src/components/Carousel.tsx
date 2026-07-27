@@ -56,7 +56,6 @@ export default function Carousel({ images }: { images: string[] }) {
                   }`}
                 />
               </div>
-              {/* Subtle bottom gradient for text legibility */}
               <div className="absolute inset-0 bg-gradient-to-t from-darkBlue-950/70 via-transparent to-transparent" />
             </div>
           );
@@ -72,8 +71,8 @@ export default function Carousel({ images }: { images: string[] }) {
           </div>
         </div>
 
-        <div className="absolute left-12 top-1/2 transform -translate-y-1/2 z-10">
-          <h1 className="pl-20 text-6xl md:text-6xl font-bold text-white drop-shadow-lg leading-tight">
+        <div className="absolute left-20 sm:left-24 md:left-12 right-20 sm:right-24 md:right-auto top-1/2 transform -translate-y-1/2 z-10">
+          <h1 className="md:pl-20 text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-lg leading-tight">
             Brooklyn Technical
             <br /> High School NHS
           </h1>

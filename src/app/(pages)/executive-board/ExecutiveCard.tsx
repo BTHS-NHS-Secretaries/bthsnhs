@@ -33,7 +33,7 @@ export default function ExecutiveCard({ executive, priority = false }: Executive
   }, []);
 
   const calculateModalPosition = (rect: DOMRect) => {
-    const modalWidth = 320; // Approximate width of modal
+    const modalWidth = 320;
     const viewportWidth = window.innerWidth;
     
     let left = rect.right + 20;
@@ -64,7 +64,6 @@ export default function ExecutiveCard({ executive, priority = false }: Executive
     setIsModalVisible(false);
   };
 
-  // Update position on scroll
   useEffect(() => {
     if (!isModalVisible) return;
 
@@ -85,7 +84,7 @@ export default function ExecutiveCard({ executive, priority = false }: Executive
         onMouseLeave={handleMouseLeave}
       >
         <div className="bg-darkBlue-800 rounded-xl overflow-hidden border-2 border-gold border-opacity-30 hover:border-opacity-100 transition-all duration-300 shadow-lg h-full hover:shadow-2xl group-hover:-translate-y-2">
-          <div className="relative overflow-hidden bg-darkBlue-700 h-[290px] flex items-center justify-center">
+          <div className="relative overflow-hidden bg-darkBlue-700 aspect-square">
             <Image
               src={executive.image}
               alt={executive.name}

@@ -1,18 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { supabaseAdmin } from '@/utils/supabase/admin';
+import { TABLES, normalizeForLookup } from '@/utils/supabase/schema';
 
 const attempts = new Map<string, { count: number; lastAttempt: number }>();
 
 export async function POST(req: NextRequest) {
   try {
     const { username, password } = await req.json();
-    
-    // RATE LIMITING
 
     const ip = req.headers.get('x-forwarded-for') || 'unknown';
     const now = Date.now();
@@ -27,8 +21,7 @@ export async function POST(req: NextRequest) {
     record.lastAttempt = now;
     attempts.set(ip, record);
 
-    // Block after 5 attempts
-    if (record.count > 5) {
+    if (record.count > 10) {
       return NextResponse.json(
         { error: 'Too many login attempts. Try again later.' },
         { status: 429 }
@@ -42,10 +35,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { data: user, error } = await supabase
-      .from('users')
+    // Case-insensitive, trimmed match — see normalizeForLookup for why an
+    // exact `.eq()` match is too fragile against sheet-imported data.
+    const { data: user, error } = await supabaseAdmin
+      .from(TABLES.USERS)
       .select('*')
-      .eq('username', username)
+      .ilike('username', normalizeForLookup(username))
       .single();
 
     if (error || !user) {
@@ -56,6 +51,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // KNOWN ISSUE: passwords are stored and compared as plain text. Anyone
+    // with database access can read every member's password directly.
+    // Fixing this requires hashing (e.g. bcrypt) plus a one-time migration
+    // to re-hash existing rows in the `users` table — flagged, not yet done.
     if (user.password !== password) {
       return NextResponse.json(
         { error: 'Invalid username or password' },

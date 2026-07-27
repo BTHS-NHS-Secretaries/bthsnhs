@@ -114,7 +114,6 @@ export default function About() {
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-darkBlue-900 to-darkBlue-950 text-white">
-      {/* Shared glow layer, matching the home + contact pages' ambient background */}
       <div className="absolute top-[6%] right-0 w-[34rem] h-[34rem] translate-x-1/3 rounded-full bg-blue-500/[0.07] blur-[120px] pointer-events-none" />
       <div className="absolute top-[48%] left-0 w-[36rem] h-[36rem] -translate-x-1/3 rounded-full bg-gold/[0.06] blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[6%] right-[8%] w-[30rem] h-[30rem] rounded-full bg-teal-500/[0.05] blur-[120px] pointer-events-none" />
