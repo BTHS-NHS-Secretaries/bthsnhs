@@ -4,15 +4,6 @@
       "title": "Upper Leadership",
       "members": [
         {
-          "id": "chloe-hui",
-          "role": "Co-President",
-          "name": "Chloe Hui",
-          "major": "Neuroscience",
-          "favoriteColor": "Muted Purple",
-          "favoriteFood": "Braised Beef with Rice",
-          "bucketListAnswer": "Traveling around Europe with my friends and family"
-        },
-        {
           "id": "angela-truong",
           "role": "Co-President",
           "name": "Angela Truong",
@@ -22,13 +13,13 @@
           "bucketListAnswer": "I'd like to take a pottery class."
         },
         {
-          "id": "selina-lin",
-          "role": "Co-Vice President",
-          "name": "Selina Lin",
-          "major": "Industrial Design",
-          "favoriteColor": "Blue",
-          "favoriteFood": "Rice noodles",
-          "bucketListAnswer": "To learn how to bike."
+          "id": "chloe-hui",
+          "role": "Co-President",
+          "name": "Chloe Hui",
+          "major": "Neuroscience",
+          "favoriteColor": "Muted Purple",
+          "favoriteFood": "Braised Beef with Rice",
+          "bucketListAnswer": "Traveling around Europe with my friends and family"
         },
         {
           "id": "eric-law",
@@ -38,6 +29,15 @@
           "favoriteColor": "Green",
           "favoriteFood": "Penne alla vodka",
           "bucketListAnswer": "Make a movie"
+        },
+        {
+          "id": "selina-lin",
+          "role": "Co-Vice President",
+          "name": "Selina Lin",
+          "major": "Industrial Design",
+          "favoriteColor": "Blue",
+          "favoriteFood": "Rice noodles",
+          "bucketListAnswer": "To learn how to bike."
         }
       ]
     },
@@ -102,6 +102,15 @@
           "favoriteColor": "White",
           "favoriteFood": "Malatang",
           "bucketListAnswer": "Skydiving"
+        },
+        {
+          "id": "piu-banik",
+          "role": "Alumni Services",
+          "name": "Piu Banik",
+          "major": "Chemistry",
+          "favoriteColor": "White",
+          "favoriteFood": "Butter Paneer",
+          "bucketListAnswer": "Going on a pilgrimage in India!"
         },
         {
           "id": "matthew-suarez",

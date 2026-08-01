@@ -112,6 +112,18 @@ function FadeInSection({
 export default function About() {
   const [isFlowchartOpen, setIsFlowchartOpen] = useState(false);
 
+  useEffect(() => {
+    if (window.location.hash !== '#get-involved') return;
+    const target = document.getElementById('get-involved');
+    if (!target) return;
+
+    const timeoutId = setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-darkBlue-900 to-darkBlue-950 text-white">
       <div className="absolute top-[6%] right-0 w-[34rem] h-[34rem] translate-x-1/3 rounded-full bg-blue-500/[0.07] blur-[120px] pointer-events-none" />
@@ -128,15 +140,15 @@ export default function About() {
 
             <div className="max-w-4xl mx-auto space-y-8">
               <p className="text-xl leading-relaxed text-gray-300">
-                The Brooklyn Technical High School National Honor Society is a prestigious organization
-                dedicated to fostering excellence in{' '}
+                The National Honor Society is one of the nation&apos;s most respected student organizations,
+                recognizing students who exemplify excellence in the four NHS pillars:{' '}
                 <span className="font-bold text-gold">scholarship</span>,{' '}
                 <span className="font-bold text-blue-400">leadership</span>,{' '}
                 <span className="font-bold text-teal-400">character</span>, and{' '}
-                <span className="font-bold text-gold">service</span>. With over{' '}
-                <span className="font-bold text-white">600+ active members</span>, we create meaningful
-                opportunities for students to grow academically and make a positive impact on our school and
-                community.
+                <span className="font-bold text-gold">service</span>. The Brooklyn Technical High School
+                chapter is proud to carry on that tradition, with{' '}
+                <span className="font-bold text-white">600+ active members</span> dedicated to serving our
+                school and the greater community.
               </p>
 
               <p className="text-xl leading-relaxed text-gray-300">
@@ -168,7 +180,7 @@ export default function About() {
           </FadeInSection>
         </section>
 
-        <section className="py-24">
+        <section id="get-involved" className="py-24">
           <FadeInSection className="max-w-7xl mx-auto px-4">
             <div className="mb-16 text-center">
               <h2 className="text-5xl font-bold mb-4 text-white">
@@ -189,19 +201,21 @@ export default function About() {
                       Want to join NHS? We welcome passionate students who are committed to making a
                       difference in our school and community. To become a member, you must apply during the
                       application period, which typically occurs in the{' '}
-                      <span className="font-bold text-gold">Fall and Summer</span>. Watch out for any emails
+                      <span className="font-bold text-gold">Spring and Fall</span>. Watch out for any emails
                       in daily announcements or check our social media for updates on when applications will
                       open. We look forward to welcoming new members who share our dedication to excellence
                       and service!
                     </p>
                     <p className="text-lg leading-relaxed text-gray-200">
                       Students must have attended Brooklyn Tech for at least one school year in order to
-                      apply. Freshmen may apply at the end of Freshman year during the Spring Applications.
-                      Applicants must have a minimum GPA of{' '}
-                      <span className="font-bold text-blue-400">85</span>. The GPA will be taken from the
-                      student&apos;s transcript at the end of the school year. To meet NHS criteria, students
-                      must earn points in four categories corresponding to the four NHS pillars: Character,
-                      Scholarship, Leadership, and Service. The minimum point requirements for acceptance are{' '}
+                      apply. Freshmen may apply at the end of freshman year during the spring application
+                      cycle. Applicants must have a minimum GPA of{' '}
+                      <span className="font-bold text-blue-400">85</span>, taken from their transcript at
+                      the end of the school year, and at least{' '}
+                      <span className="font-bold text-blue-400">50 hours of community service</span>{' '}
+                      (summer hours count). To meet NHS criteria, students must also earn points in four
+                      categories corresponding to the four NHS pillars: Character, Scholarship, Leadership,
+                      and Service. The minimum point requirements for acceptance are{' '}
                       <span className="font-bold text-teal-400">13 for Sophomores</span>,{' '}
                       <span className="font-bold text-teal-400">14 for Juniors</span>, and{' '}
                       <span className="font-bold text-teal-400">16 for Seniors</span>.

@@ -1,34 +1,47 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { ChevronDown, Mail, MapPin, MessageCircle, Link2, Instagram, HelpCircle } from 'lucide-react';
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
   accent: string;
 }
 
 const faqItems: FAQItem[] = [
   {
     question: 'How do I join NHS?',
-    answer: 'Visit the details page, applications for new members come every Summer and Fall.',
+    answer: (
+      <>
+        NHS applications open each spring and fall. When applications are available, the application form
+        will be shared through the Brooklyn Tech Daily Announcements emails. Visit the{' '}
+        <Link
+          href="/about#get-involved"
+          className="text-gold hover:text-yellow-300 underline underline-offset-2 transition-colors"
+        >
+          About page
+        </Link>{' '}
+        for eligibility requirements and more information about joining.
+      </>
+    ),
     accent: 'gold',
   },
   {
     question: 'When are your meetings?',
     answer:
-      'We hold mandatory monthly meetings general meetings through the year, as well you must attend your commitee specific monthly meetings.',
+      'We hold mandatory monthly General Meetings throughout the school year, as well as mandatory monthly Committee Meetings for your assigned committee. General Meeting dates are typically finalized at the beginning of the school year, and members are notified several weeks in advance of each meeting.',
     accent: 'blue',
   },
   {
     question: 'What is the time commitment for NHS members?',
-    answer: 'NHS is a moderate time commitment, you must attend monthly meetings and participate in your committees work. There are also many volunteering or in person events that you can attend to gain general points to be readmitted.',
+    answer: "NHS is a moderate time commitment. Members are expected to attend monthly General and Committee Meetings, participate in committee activities, and volunteer at school or community events throughout the year. Some events may take place after school or on weekends, but advance notice is always provided. Activities earn points toward our internal point requirement, which members must fulfill to be readmitted as a member.",
     accent: 'teal',
   },
   {
     question: 'What are some of the benefits of joining NHS?',
-    answer: 'NHS is a great way to get involved in get involved in our schools events and community, as most of those volunteers come from NHS. Each of the committees also does their own work and events.',
+    answer: 'NHS gives students the opportunity to become more involved in the Brooklyn Tech community through service, leadership, and volunteering. Members can participate in one of our 12 committees, volunteer at major school events, earn service hours, develop valuable leadership and communication skills, and have the chance to connect with other motivated students who are committed to serving the school and community.',
     accent: 'gold',
   }
 ];
@@ -128,7 +141,7 @@ export default function Contact() {
                   href="mailto:leadership@bthsnhs.org"
                   className="text-gold text-lg hover:text-yellow-300 transition-colors break-all font-semibold"
                 >
-                  leadership@bthsnhs.org
+                  thebthsnationalhonorsociety@gmail.com
                 </a>
               </div>
               <div className="group relative text-center p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-gold/40 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
@@ -140,7 +153,7 @@ export default function Contact() {
                   href="mailto:secretaries@bthsnhs.org"
                   className="text-gold text-lg hover:text-yellow-300 transition-colors break-all font-semibold"
                 >
-                  secretaries@bthsnhs.org
+                  secs.nhs@gmail.com
                 </a>
               </div>
             </div>

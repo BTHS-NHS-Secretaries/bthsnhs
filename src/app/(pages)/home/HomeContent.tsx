@@ -83,7 +83,7 @@ const COMMITTEES = [
   'Mentorship & Tutoring — Support fellow students in their academic journey',
   'Event Coordination — Plan and execute meaningful school and community events',
   'Community Service — Volunteer with local organizations and initiatives',
-  '12+ Active Committees — Join a team aligned with your passions and interests',
+  '12 Active Committees — Join a team aligned with your passions and interests',
 ];
 
 const EVENTS = [
@@ -92,14 +92,14 @@ const EVENTS = [
     title: 'Freshman Orientation',
     image: '/data/images/fresh-orientation.jpg',
     description:
-      'Welcome new students to the BTHS community with an engaging orientation event. They learn about BTHS classes, clubs, and resources, while meeting fellow students and upperclassmen that teach them about the school and how to succeed in it.',
+      'Welcome new students to the BTHS community with an engaging orientation event, where they learn about BTHS classes, clubs, and resources while meeting fellow students and upperclassmen who help them succeed at the school.',
     accent: { text: 'text-gold', ring: 'ring-gold/40' },
   },
   {
     id: 'fwv',
     title: 'Future World Visions',
     image: '/data/images/fwv.JPG',
-    description: 'Future world visions is a intiative to teach younger students about STEM, in hopes of leading the construction of a better future. Volunteers from NHS help run the event, and guide students to workshops hosted by several BTHS clubs and organizations, where they learn about various topics and fields in STEM.',
+    description: 'Future World Visions is an initiative to teach younger students about STEM, in hopes of inspiring the next generation of innovators. NHS volunteers help run the event and guide students to workshops hosted by several BTHS clubs and organizations, where they explore a variety of STEM fields.',
     accent: { text: 'text-blue-400', ring: 'ring-blue-400/40' },
   },
   {
@@ -190,7 +190,7 @@ export default function HomeContent({
                   </div>
 
                   <Link
-                    href="/about"
+                    href="/about#get-involved"
                     className="inline-flex items-center gap-2 bg-gold text-darkBlue-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 hover:shadow-[0_0_25px_rgba(218,165,32,0.5)] transition-all duration-300"
                   >
                     Learn More
