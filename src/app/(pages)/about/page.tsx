@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
 import CommitteeGrid from '@/components/CommitteeGrid';
+import PillarColumns from '@/components/PillarColumns';
 import TypeOnView from '@/components/TypeOnView';
 
 function ImageLightbox({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
@@ -132,13 +133,13 @@ export default function About() {
 
       <div className="relative">
         <FadeInSection className="max-w-7xl mx-auto px-4 pt-32">
-          <div className="mb-12">
-            <h1 className="text-6xl font-bold mb-6 text-center text-white">
+          <div className="mb-8">
+            <h1 className="text-6xl font-bold mb-4 text-center text-white">
               <TypeOnView text="About" /> <span className="text-blue-400">NHS</span>
             </h1>
-            <div className="w-32 h-1 bg-blue-400 mx-auto rounded-full mb-8"></div>
+            <div className="w-32 h-1 bg-blue-400 mx-auto rounded-full mb-6"></div>
 
-            <div className="max-w-4xl mx-auto space-y-8">
+            <div className="max-w-4xl mx-auto space-y-5">
               <p className="text-xl leading-relaxed text-gray-300">
                 The National Honor Society is one of the nation&apos;s most respected student organizations,
                 recognizing students who exemplify excellence in the four NHS pillars:{' '}
@@ -152,20 +153,25 @@ export default function About() {
               </p>
 
               <p className="text-xl leading-relaxed text-gray-300">
-                NHS members participate in two types of events:{' '}
-                <span className="font-semibold text-blue-400">general organization-wide events</span> where
-                the entire membership comes together to celebrate and serve, and{' '}
-                <span className="font-semibold text-teal-400">specialized committee events</span> where
-                smaller groups focus on specific initiatives and causes. This allows you to engage at the
-                level that best suits your interests and schedule.
+                Our purpose is simple: to serve both Brooklyn Tech and the wider community, whether that
+                means volunteering with local organizations, tutoring and mentoring fellow students,
+                supporting school faculty, or contributing to major events throughout the year. Whenever our
+                school has needed a hand, our members have consistently stepped up — and that commitment is
+                what continues to define who we are.
               </p>
             </div>
           </div>
         </FadeInSection>
 
-        <section className="py-24">
+        <section className="pt-8 pb-10">
           <FadeInSection className="max-w-7xl mx-auto px-4">
-            <div className="mb-16 text-center">
+            <PillarColumns />
+          </FadeInSection>
+        </section>
+
+        <section className="py-14">
+          <FadeInSection className="max-w-7xl mx-auto px-4">
+            <div className="mb-10 text-center">
               <h2 className="text-5xl font-bold mb-4 text-white">
                 Our <TypeOnView text="Committees" className="text-blue-400" />
               </h2>
@@ -180,9 +186,9 @@ export default function About() {
           </FadeInSection>
         </section>
 
-        <section id="get-involved" className="py-24">
+        <section id="get-involved" className="py-14">
           <FadeInSection className="max-w-7xl mx-auto px-4">
-            <div className="mb-16 text-center">
+            <div className="mb-10 text-center">
               <h2 className="text-5xl font-bold mb-4 text-white">
                 Get <TypeOnView text="Involved" className="text-blue-400" />
               </h2>

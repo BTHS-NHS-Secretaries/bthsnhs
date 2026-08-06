@@ -55,8 +55,15 @@ export default function ExecutiveCard({ executive, priority = false }: Executive
   const handleMouseEnter = () => {
     if (cardRef.current) {
       const rect = cardRef.current.getBoundingClientRect();
-      setModalPosition(calculateModalPosition(rect));
+
+      setModalPosition({ top: rect.top + rect.height / 2, left: rect.left + rect.width / 2 });
       setIsModalVisible(true);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setModalPosition(calculateModalPosition(rect));
+        });
+      });
     }
   };
 

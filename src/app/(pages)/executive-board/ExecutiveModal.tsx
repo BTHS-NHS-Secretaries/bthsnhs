@@ -20,8 +20,8 @@ interface ExecutiveModalProps {
 export default function ExecutiveModal({ executive, isVisible, position }: ExecutiveModalProps) {
   return (
     <div
-      className={`fixed bg-darkBlue-800 bg-opacity-95 backdrop-blur-sm rounded-xl border-2 border-gold border-opacity-50 shadow-2xl p-6 z-50 transition-all duration-300 max-w-xs ${
-        isVisible ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+      className={`fixed bg-darkBlue-800 bg-opacity-95 backdrop-blur-sm rounded-xl border-2 border-gold border-opacity-50 shadow-2xl p-6 z-50 transition-all duration-300 max-w-xs pointer-events-none ${
+        isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}
       style={{
         top: `${position.top}px`,

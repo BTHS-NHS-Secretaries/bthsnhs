@@ -131,11 +131,11 @@ export default function HomeContent({
         <div className="absolute bottom-[4%] right-[8%] w-[30rem] h-[30rem] rounded-full bg-teal-500/[0.05] blur-[120px] pointer-events-none" />
 
         <FadeInSection className="relative bg-gradient-to-b from-darkBlue-900 to-darkBlue-950">
-          <div className="relative max-w-7xl mx-auto px-4 pt-32 pb-24">
+          <div className="relative max-w-7xl mx-auto px-4 pt-20 pb-14">
             <h2 className="text-6xl font-bold mb-6 text-center text-white">
               <TypeOnView text="About" className="text-gold" /> BTHS NHS
             </h2>
-            <div className="w-32 h-1 bg-gold mx-auto rounded-full mb-16" />
+            <div className="w-32 h-1 bg-gold mx-auto rounded-full mb-10" />
 
             <div className="grid lg:grid-cols-5 gap-10 items-start">
               <div className="lg:col-span-3">
@@ -202,15 +202,15 @@ export default function HomeContent({
           </div>
         </FadeInSection>
 
-        <section className="relative bg-darkBlue-950 py-24">
-          <FadeInSection className="max-w-7xl mx-auto px-4 mb-20">
+        <section className="relative bg-darkBlue-950 py-14">
+          <FadeInSection className="max-w-7xl mx-auto px-4 mb-12">
             <h2 className="text-6xl font-bold mb-6 text-center text-white">
               <TypeOnView text="Featured" className="text-gold" /> Events
             </h2>
             <div className="w-32 h-1 bg-gold mx-auto rounded-full" />
           </FadeInSection>
 
-          <div className="max-w-7xl mx-auto px-4 space-y-24">
+          <div className="max-w-7xl mx-auto px-4 space-y-14">
             {EVENTS.map((event, i) => (
               <FadeInSection key={event.id} direction={i % 2 === 0 ? 'left' : 'right'}>
                 <div
@@ -257,7 +257,7 @@ export default function HomeContent({
           </div>
         </section>
 
-        <section className="relative bg-gradient-to-b from-darkBlue-950 to-darkBlue-900 py-24">
+        <section className="relative bg-gradient-to-b from-darkBlue-950 to-darkBlue-900 py-14">
           <FadeInSection className="max-w-7xl mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-14 items-center">
               <div>
