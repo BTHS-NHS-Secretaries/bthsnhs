@@ -23,8 +23,8 @@ const socialLinks = [
   },
   {
     label: "Email",
-    href: "mailto:leadership@bthsnhs.org",
-    handle: "leadership@bthsnhs.org",
+    href: "mailto:thebthsnationalhonorsociety@gmail.com",
+    handle: "thebthsnationalhonorsociety@gmail.com",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" />
